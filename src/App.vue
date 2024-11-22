@@ -19,6 +19,10 @@ function translateTo() {
 }
 
 function sentenceTokenizer(text) {
+  /**
+   * Checks if the sentence ends with a period, exclamation mark, or question mark.
+   * If a sentence does not end with one of these punctuation marks, a period is appended.
+   */
   const sentences = text.split(/[\\.!?]/).map((sentence) => sentence.trim())
 
   return sentences.map((sentence) => {
@@ -30,12 +34,11 @@ function sentenceTokenizer(text) {
 }
 
 function srtToTxt(text) {
-  /*
-    Split content into subtitle blocks
-    Process each block to extract only the text
-    Remove the first two lines (number and timestamp)
-    and join the remaining lines (subtitle text)
-  */
+  /**
+   * Split content into subtitle blocks
+   * Process each block to extract only the text
+   * Remove the first two lines (number and timestamp) and join the remaining lines (subtitle text)
+   */
   const blocks = text.trim().split('\n\n')
 
   const textLines = blocks.map((block) => {
