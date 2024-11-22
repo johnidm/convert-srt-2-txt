@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+  <h1>Convert STR to TXT</h1>
   </main>
 </template>
+
+<style scope>
+
+main {
+  background-color: cadetblue;
+}
+
+</style>
