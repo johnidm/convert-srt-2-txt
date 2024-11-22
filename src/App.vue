@@ -10,6 +10,10 @@ async function handleFileChange(event) {
   content.value = sentenceTokenizer(srtToTxt(text))
 }
 
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+}
+
 function sentenceTokenizer(text) {
   const sentences = text.split(/[\\.!\?]/).map((sentence) => sentence.trim())
 
@@ -48,7 +52,11 @@ function srtToTxt(text) {
 
       <div v-if="content">
         <h3>Extracted Text:</h3>
-        <p v-for="(sentence, index) in content" :key="index">{{ sentence }}</p>
+
+        <div v-for="(sentence, index) in content" :key="index">
+          <p>{{ sentence }}</p>
+          <button @click="copyToClipboard(sentence)">Copy</button>
+        </div>
       </div>
     </div>
   </main>
