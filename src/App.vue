@@ -14,8 +14,12 @@ function copyToClipboard(text) {
   navigator.clipboard.writeText(text)
 }
 
+function translateTo() {
+  alert("This feature isn't available.")
+}
+
 function sentenceTokenizer(text) {
-  const sentences = text.split(/[\\.!\?]/).map((sentence) => sentence.trim())
+  const sentences = text.split(/[\\.!?]/).map((sentence) => sentence.trim())
 
   return sentences.map((sentence) => {
     if (sentence && !/[.!?]$/.test(sentence)) {
@@ -44,29 +48,32 @@ function srtToTxt(text) {
 </script>
 
 <template>
-  <header>Header</header>
+  <section class="pico">
+    <input type="file" @change="handleFileChange" accept=".srt" />
+    <div v-if="content">
+      <h3>Converted Text</h3>
 
-  <main>
-    <div>
-      <input type="file" @change="handleFileChange" accept=".srt" />
+      <div v-for="(sentence, index) in content" :key="index">
+        <p>{{ sentence }}</p>
+        <nav>
+          <ul>
+            <li>
+              <a href="#" @click="copyToClipboard(sentence)">Copy</a>
+            </li>
+            <li>
+              <a href="#" @click="translateTo(sentence)">Translate</a>
+            </li>
+          </ul>
+        </nav>
 
-      <div v-if="content">
-        <h3>Extracted Text:</h3>
-
-        <div v-for="(sentence, index) in content" :key="index">
-          <p>{{ sentence }}</p>
-          <button @click="copyToClipboard(sentence)">Copy</button>
-        </div>
+        <hr />
       </div>
     </div>
-  </main>
-
-  <footer>Footer</footer>
+  </section>
 </template>
 
 <style scoped>
 p {
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 </style>

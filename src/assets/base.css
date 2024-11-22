@@ -58,6 +58,7 @@
   font-weight: normal;
 }
 
+html,
 body {
   min-height: 100vh;
   color: var(--color-text);
@@ -65,7 +66,6 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
-  line-height: 1.6;
   font-family:
     Inter,
     -apple-system,
@@ -79,8 +79,29 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
+
+main {
+  background-color: white;
+}
+
+header {
+  background-color: white;
+}
+
+footer {
+  background-color: white;
 }
