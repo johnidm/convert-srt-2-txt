@@ -3,22 +3,21 @@ import { ref } from 'vue'
 
 const content = ref('')
 
-async function handleFileChange(event) {
+const handleFileChange = async (event) => {
   const file = event.target.files[0]
-
   const text = await file.text()
   content.value = sentenceTokenizer(srtToTxt(text))
 }
 
-function copyToClipboard(text) {
+const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text)
 }
 
-function translateTo() {
+const translateTo = () => {
   alert("This feature isn't available.")
 }
 
-function sentenceTokenizer(text) {
+const sentenceTokenizer = (text) => {
   /**
    * Checks if the sentence ends with a period, exclamation mark, or question mark.
    * If a sentence does not end with one of these punctuation marks, a period is appended.
@@ -33,7 +32,7 @@ function sentenceTokenizer(text) {
   })
 }
 
-function srtToTxt(text) {
+const srtToTxt = (text) => {
   /**
    * Split content into subtitle blocks
    * Process each block to extract only the text
@@ -76,7 +75,56 @@ function srtToTxt(text) {
 </template>
 
 <style scoped>
+input[type="file"] {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[type="file"]:hover {
+  border-color: #666;
+  background-color: #f5f5f5;
+}
+
+h3 {
+  margin: 2rem 0 1rem;
+  color: #2c3e50;
+}
+
 p {
-  padding-top: 0.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #2c3e50;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  background-color: #2c3e50;
+  color: white;
+}
+
+hr {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px solid #dee2e6;
 }
 </style>
