@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import SentenceItem from './components/SentenceItem.vue'
 
 const content = ref('')
 
@@ -7,14 +8,6 @@ const handleFileChange = async (event) => {
   const file = event.target.files[0]
   const text = await file.text()
   content.value = sentenceTokenizer(srtToTxt(text))
-}
-
-const copyToClipboard = (text) => {
-  navigator.clipboard.writeText(text)
-}
-
-const translateTo = () => {
-  alert("This feature isn't available.")
 }
 
 const sentenceTokenizer = (text) => {
@@ -54,28 +47,21 @@ const srtToTxt = (text) => {
     <input type="file" @change="handleFileChange" accept=".srt" />
     <div v-if="content">
       <h3>Converted Text</h3>
-
       <div v-for="(sentence, index) in content" :key="index">
-        <p>{{ sentence }}</p>
-        <div class="actions">
-          <a class="actions-item" href="#" @click="copyToClipboard(sentence)">Copy</a>
-          <a class="actions-item" href="#" @click="translateTo(sentence)">Translate</a>
-        </div>
-
-        <hr />
+        <SentenceItem :sentence="sentence" />
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-input[type="file"] {
+input[type='file'] {
   border: 2px dashed #ccc;
   border-radius: 8px;
   cursor: pointer;
 }
 
-input[type="file"]:hover {
+input[type='file']:hover {
   border-color: #666;
   background-color: #f5f5f5;
 }
