@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import SentenceItem from './components/SentenceItem.vue'
 
 const content = ref('')
 
@@ -45,12 +44,8 @@ const srtToTxt = (text) => {
 <template>
   <section class="pico">
     <input type="file" @change="handleFileChange" accept=".srt" />
-    <div v-if="content">
-      <h3>Converted Text</h3>
-      <div v-for="(sentence, index) in content" :key="index">
-        <SentenceItem :sentence="sentence" />
-      </div>
-    </div>
+
+    <SentenceList :content="content" />
   </section>
 </template>
 
@@ -64,47 +59,5 @@ input[type='file'] {
 input[type='file']:hover {
   border-color: #666;
   background-color: #f5f5f5;
-}
-
-h3 {
-  margin: 2rem 0 1rem;
-  color: #2c3e50;
-}
-
-p {
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 6px;
-  line-height: 1.6;
-}
-
-div.actions {
-  display: flex;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-div.actions a.actions-item {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: #2c3e50;
-  background-color: #e9ecef;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-div a:hover {
-  background-color: #2c3e50;
-  color: white;
-}
-
-hr {
-  margin: 1.5rem 0;
-  border: none;
-  border-top: 1px solid #dee2e6;
 }
 </style>
