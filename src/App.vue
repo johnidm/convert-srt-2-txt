@@ -57,16 +57,10 @@ const srtToTxt = (text) => {
 
       <div v-for="(sentence, index) in content" :key="index">
         <p>{{ sentence }}</p>
-        <nav>
-          <ul>
-            <li>
-              <a href="#" @click="copyToClipboard(sentence)">Copy</a>
-            </li>
-            <li>
-              <a href="#" @click="translateTo(sentence)">Translate</a>
-            </li>
-          </ul>
-        </nav>
+        <div class="actions">
+          <a class="actions-item" href="#" @click="copyToClipboard(sentence)">Copy</a>
+          <a class="actions-item" href="#" @click="translateTo(sentence)">Translate</a>
+        </div>
 
         <hr />
       </div>
@@ -98,7 +92,7 @@ p {
   line-height: 1.6;
 }
 
-nav ul {
+div.actions {
   display: flex;
   gap: 1rem;
   padding: 0;
@@ -106,7 +100,7 @@ nav ul {
   list-style: none;
 }
 
-nav a {
+div.actions a.actions-item {
   display: inline-block;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -117,7 +111,7 @@ nav a {
   transition: all 0.2s ease;
 }
 
-nav a:hover {
+div a:hover {
   background-color: #2c3e50;
   color: white;
 }
