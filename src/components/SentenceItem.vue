@@ -17,12 +17,11 @@ const translateTo = () => {
 
 <template>
     <div class="sentence-item">
-        <p>{{ sentence }}</p>
+        <p class="sentence-title">{{ sentence }}</p>
         <div class="actions">
-            <a class="actions-item" href="#" @click="copyToClipboard(sentence)">Copy</a>
-            <a class="actions-item" href="#" @click="translateTo(sentence)">Translate</a>
+            <a href="#" @click="copyToClipboard(sentence)">Copy</a>
+            <a href="#" @click="translateTo(sentence)">Translate</a>
         </div>
-        <hr />
     </div>
 </template>
 
@@ -31,13 +30,7 @@ const translateTo = () => {
     margin-bottom: 1rem;
 }
 
-hr {
-    margin: 1.5rem 0;
-    border: none;
-    border-top: 1px solid #dee2e6;
-}
-
-p {
+.sentence-title {
     padding: 1rem;
     background-color: #f8f9fa;
     border-radius: 6px;
@@ -50,22 +43,6 @@ p {
     gap: 1rem;
     padding: 0;
     margin: 0.5rem 0;
-    list-style: none;
-}
-
-.actions-item {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    color: #2c3e50;
-    background-color: #e9ecef;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-}
-
-.actions-item:hover {
-    background-color: #2c3e50;
-    color: white;
+    justify-content: flex-end;
 }
 </style>

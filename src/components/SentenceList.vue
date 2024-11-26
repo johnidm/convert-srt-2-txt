@@ -14,7 +14,6 @@ defineProps({
         <h3>Converted Text</h3>
         <div v-for="(sentence, index) in content" :key="index">
             <SentenceItem :sentence="sentence" />
-            {{ sentence }}
         </div>
     </div>
 </template>
