@@ -3,22 +3,21 @@ import { ref } from 'vue'
 
 const content = ref('')
 
-async function handleFileChange(event) {
+const handleFileChange = async (event) => {
   const file = event.target.files[0]
-
   const text = await file.text()
   content.value = sentenceTokenizer(srtToTxt(text))
 }
 
-function copyToClipboard(text) {
+const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text)
 }
 
-function translateTo() {
+const translateTo = () => {
   alert("This feature isn't available.")
 }
 
-function sentenceTokenizer(text) {
+const sentenceTokenizer = (text) => {
   /**
    * Checks if the sentence ends with a period, exclamation mark, or question mark.
    * If a sentence does not end with one of these punctuation marks, a period is appended.
@@ -33,7 +32,7 @@ function sentenceTokenizer(text) {
   })
 }
 
-function srtToTxt(text) {
+const srtToTxt = (text) => {
   /**
    * Split content into subtitle blocks
    * Process each block to extract only the text
