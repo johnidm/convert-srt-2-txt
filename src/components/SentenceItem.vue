@@ -31,6 +31,12 @@ const translateTo = () => {
   margin-bottom: 1rem;
 }
 
+hr {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px solid #dee2e6;
+}
+
 p {
   padding: 1rem;
   background-color: #f8f9fa;
@@ -61,11 +67,5 @@ p {
 .actions-item:hover {
   background-color: #2c3e50;
   color: white;
-}
-
-hr {
-  margin: 1.5rem 0;
-  border: none;
-  border-top: 1px solid #dee2e6;
 }
 </style>
