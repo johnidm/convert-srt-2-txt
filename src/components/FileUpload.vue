@@ -5,8 +5,21 @@ const handleFileUpload = async (event) => {
     const file = event.target.files[0]
     const text = await file.text()
 
-    const sentences = sentenceTokenizer(srtToTxt(text))
+    const sentences = groupSentences(sentenceTokenizer(srtToTxt(text)))
     content.value = sentences
+}
+
+const groupSentences = (text) => {
+    const chunk_size = 3
+    const new_line = '\n'
+
+    const sentences = []
+
+    for (let i = 0; i < text.length; i += chunk_size) {
+        const subtext = text.slice(i, i + chunk_size)
+        sentences.push( subtext.join(new_line))
+    }
+    return sentences
 }
 
 const sentenceTokenizer = (text) => {
